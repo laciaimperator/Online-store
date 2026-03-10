@@ -495,8 +495,6 @@ def main():
     add_order(orders_collection, customers_collection, products_collection, "o12", "C03",
               [{"product_id": "P00010", "quantity": 1}])
 
-    #--------Zadanie 1---------
-
     # Test empty string with customers
     add_customer(customers_collection, 'C06', "", "marianna@email.com", '456789123', "adres3")
     #Test string with spaces
@@ -523,32 +521,31 @@ def main():
     # Customer with no orders
     view_orders_by_customer(orders_collection, 'C05')
 
-
-    #--------Zadanie 2---------
-    # Walidacja adresu email- brak '@'
+    # Email address validation
+    # No '@'
     add_customer(customers_collection, 'C06', "Marzanna", "marzannaemail.com", '567891234', "adres5")
-    # Brak '.'
+    # No '.'
     add_customer(customers_collection, 'C06', "Marzanna", "marzanna@emailcom", '567891234', "adres5")
-    # Pusty username
+    # Empty username
     add_customer(customers_collection, 'C06', "Marzanna", "@email.com", '567891234', "adres5")
-    # Pusta prawa część domeny
+    # Empty right side of domain
     add_customer(customers_collection, 'C06', "Marzanna", "marzanna@.com", '567891234', "adres5")
-    # Pusta lewa część domeny
+    # Empty left side of domain
     add_customer(customers_collection, 'C06', "Marzanna", "marzanna@email.", '567891234', "adres5")
-    # Walidacja w update
+    # Validation in update
     update_customer(customers_collection, 'C01', email='@email.com')
 
-    # Walidacja numeru telefonu- poprawny, zawiera '-', ' ', '(', ')'
+    # Phone number validation
+    # Correct phone number, contains '-', ' ', '(', ')'
     add_customer(customers_collection, 'C06', "Marzanna", "marzanna@email.com", '56 7891-234)(', "adres5")
-    # Niepoprawny, zawiera '/'
+    # Incorrect, contains '/'
     add_customer(customers_collection, 'C07', "Lilianna", "lilianna@email.com", '6789/12345', "adres5")
-    # Niepoprawny, zawiera niż 7 cyfr
+    # Incorrect, contains more than 7 numbers
     add_customer(customers_collection, 'C07', "Lilianna", "lilianna@email.com", '123456', "adres5")
-    # Walidacja w update
+    # Validation in update
     update_customer(customers_collection, 'C01', phone='123a456')
 
 
-    #--------Zadanie 3---------
     count_orders_per_customer(orders_collection)
     total_spent_per_customer(orders_collection)
 
@@ -563,3 +560,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
